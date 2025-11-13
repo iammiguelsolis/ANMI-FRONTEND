@@ -25,7 +25,7 @@ export const DietCarousel: React.FC = () => {
         {/* Botón Izquierdo */}
         <button
           onClick={() => scroll('left')}
-          className="hidden md:flex absolute -left-8 top-1/2 -translate-y-1/2 z-20
+          className="hidden md:flex absolute -left-14 top-1/2 -translate-y-1/2 z-20
                      bg-white shadow-md rounded-full p-2 hover:bg-gray-100 transition-all duration-200"
         >
           <ChevronLeftIcon className="w-6 h-6 text-gray-700" />
@@ -87,7 +87,7 @@ export const DietCarousel: React.FC = () => {
         {/* Botón Derecho */}
         <button
           onClick={() => scroll('right')}
-          className="hidden md:flex absolute -right-8 top-1/2 -translate-y-1/2 z-20
+          className="hidden md:flex absolute -right-14 top-1/2 -translate-y-1/2 z-20
                      bg-white shadow-md rounded-full p-2 hover:bg-gray-100 transition-all duration-200"
         >
           <ChevronRight className="w-6 h-6 text-gray-700" />
