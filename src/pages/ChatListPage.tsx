@@ -1,4 +1,3 @@
-// src/pages/ChatListPage.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { createChat, getUserChats } from '../api/apiService';

@@ -1,14 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-// Corregimos las rutas de importación añadiendo la extensión .tsx
-import { LoginPage } from './pages/LoginPage.tsx';
-import { RegisterPage } from './pages/RegisterPage.tsx';
-import { HomePage } from './pages/HomePage.tsx'; // Esta es tu página de "Dashboard"
-import { ChatListPage } from './pages/ChatListPage.tsx';
-import { ChatWindowPage } from './pages/ChatWindowPage.tsx';
-import { LandingPage } from './pages/LandingPage.tsx'; // <-- NUEVA PÁGINA
+import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
+import { HomePage } from './pages/HomePage'; // Esta es tu página de "Dashboard"
+import { ChatListPage } from './pages/ChatListPage';
+import { ChatWindowPage } from './pages/ChatWindowPage';
+import { LandingPage } from './pages/LandingPage'; // <-- NUEVA PÁGINA
 
 // Componente de Ruta Protegida (sin cambios)
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
   const token = localStorage.getItem('anmi_token');
   if (!token) {
     return <Navigate to="/login" replace />;

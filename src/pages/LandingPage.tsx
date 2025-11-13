@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { PublicHeader } from '../components/PublicHeader.tsx';
-import { Footer } from '../components/Footer.tsx';
+import { PublicHeader } from '../components/PublicHeader';
+import { Footer } from '../components/Footer';
 import Foto from '../assets/landing.jpg';
 
 // Íconos SVG para las características
