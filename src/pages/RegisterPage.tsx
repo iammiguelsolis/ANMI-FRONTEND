@@ -62,7 +62,7 @@ export const RegisterPage: React.FC = () => {
             type="number"
             value={babyAgeMonths}
             onChange={(e) => setBabyAgeMonths(e.target.value)}
-            placeholder="Edad del bebé (meses)"
+            placeholder="Edad del infante (meses)"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
           />
 
