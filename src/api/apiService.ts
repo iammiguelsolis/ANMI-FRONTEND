@@ -2,7 +2,7 @@
 import axios from 'axios';
 import type { AuthResponse, RegisterData, LoginData } from '../types';
 // 1. Apunta a tu backend
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'https://anmi-backend.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_URL,
