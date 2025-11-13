@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Logo de Gota de Sangre (SVG animado)
 const BloodDropLogo = () => (
   <svg 
     className="w-8 h-8 text-red-600 animate-pulse" 
@@ -17,26 +16,24 @@ const BloodDropLogo = () => (
 
 export const PublicHeader: React.FC = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
       <nav className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo y Título */}
           <Link to="/" className="flex items-center space-x-2">
             <BloodDropLogo />
             <span className="text-xl font-bold text-gray-800">ANMI</span>
           </Link>
           
-          {/* Botones de Navegación */}
           <div className="flex items-center space-x-2">
             <Link 
               to="/login" 
-              className="px-4 py-2 text-sm font-medium text-red-600 rounded-lg hover:bg-red-50"
+              className="px-4 py-2 text-sm font-medium text-red-600 rounded-lg hover:bg-red-50 transition-colors duration-200"
             >
               Iniciar Sesión
             </Link>
             <Link 
               to="/register" 
-              className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg shadow-sm hover:bg-red-700"
+              className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg shadow-sm hover:bg-red-700 transition-colors duration-200"
             >
               Registrarse
             </Link>
