@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { loginUser } from '../api/apiService';
+import { loginUser } from '../api/apiService.ts'; // <-- Se añadió la extensión .ts
 import { useNavigate, Link } from 'react-router-dom';
 
 export const LoginPage: React.FC = () => {
@@ -13,7 +13,7 @@ export const LoginPage: React.FC = () => {
       const { data } = await loginUser({ username, password });
       localStorage.setItem('anmi_token', data.token);
       alert('¡Login exitoso!');
-      navigate('/app'); // Redirige a la página de chat
+      navigate('/app'); // Redirige al dashboard de la app
     } catch (error) {
       alert('Error en el login');
       console.error(error);
@@ -33,7 +33,7 @@ export const LoginPage: React.FC = () => {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Nombre de usuario"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" // <-- focus:ring-red-500
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
           />
           <input
             type="password"
@@ -41,7 +41,7 @@ export const LoginPage: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Contraseña"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" // <-- focus:ring-red-500
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
           />
           <button
             type="submit"
@@ -50,9 +50,14 @@ export const LoginPage: React.FC = () => {
             Iniciar Sesión
           </button>
         </form>
-        <div className="text-center">
-          <Link to="/register" className="text-sm text-red-600 hover:underline"> {/* <-- Color del link cambiado a 'red' */}
+        <div className="text-center space-y-2">
+          <Link to="/register" className="text-sm text-red-600 hover:underline">
             ¿No tienes cuenta? Regístrate
+          </Link>
+          <br />
+          {/* --- ENLACE AÑADIDO --- */}
+          <Link to="/" className="text-sm text-gray-500 hover:underline">
+            &larr; Volver al inicio
           </Link>
         </div>
       </div>

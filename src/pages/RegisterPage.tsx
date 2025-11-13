@@ -100,6 +100,11 @@ export const RegisterPage: React.FC = () => {
           <Link to="/login" className="text-sm text-red-600 hover:underline">
             ¿Ya tienes cuenta? Inicia sesión
           </Link>
+          <br />
+          {/* --- ENLACE AÑADIDO --- */}
+          <Link to="/" className="text-sm text-gray-500 hover:underline">
+            &larr; Volver al inicio
+          </Link>
         </div>
       </div>
 
