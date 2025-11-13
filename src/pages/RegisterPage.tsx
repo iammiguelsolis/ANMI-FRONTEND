@@ -110,7 +110,7 @@ export const RegisterPage: React.FC = () => {
 
       {/* --- MODAL CON EL "FLORO" ÉTICO --- */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={toggleModal}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center " onClick={toggleModal}>
           <div className="w-full max-w-lg p-6 bg-white rounded-xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Términos de Servicio y Consentimiento</h3>
             <div className="space-y-4 text-gray-700 max-h-[60vh] overflow-y-auto pr-2">
