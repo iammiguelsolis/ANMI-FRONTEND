@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage'; // Esta es tu página de "Dashboard
 import { ChatListPage } from './pages/ChatListPage';
 import { ChatWindowPage } from './pages/ChatWindowPage';
 import { LandingPage } from './pages/LandingPage'; // <-- NUEVA PÁGINA
+import { DietDetailPage } from './pages/DietDetailPage';
 
 // Componente de Ruta Protegida (sin cambios)
 const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
@@ -36,6 +37,10 @@ function App() {
         <Route 
           path="/chat/:chatId" 
           element={<ProtectedRoute><ChatWindowPage /></ProtectedRoute>} 
+        />
+        <Route 
+          path="/diet/:dietId" 
+          element={<ProtectedRoute><DietDetailPage /></ProtectedRoute>} 
         />
         
         {/* Redirigir cualquier otra ruta a la Landing Page */}
