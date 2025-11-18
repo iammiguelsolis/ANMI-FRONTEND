@@ -125,18 +125,10 @@ export const HomePage: React.FC = () => {
           <div className="space-y-6">
             
             {/* Hero Card */}
-            <div className="bg-red-500 rounded-2xl shadow-xl overflow-hidden">
+            <div className="bg-red-600 rounded-2xl shadow-xl overflow-hidden">
               <div className="p-8 text-white">
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-                      <img 
-                        src={Logo}
-                        alt="ANMI" 
-                        className="w-14 h-14 rounded-xl object-cover"
-                        onError={(e) => (e.currentTarget.src = 'https://placehold.co/56/ffffff/ef4444?text=A')}
-                      />
-                    </div>
                     <div>
                       <h1 className="text-3xl font-bold mb-1">¡Bienvenido! 👋</h1>
                       <p className="text-white/90 text-lg">Tu asistente nutricional contra la anemia</p>

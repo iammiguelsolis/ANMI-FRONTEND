@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import LogoHorizontal from '../assets/logohorizontal.png';
 
 export const LandingPage: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,10 +36,11 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
-              </div>
-              <span className="text-2xl font-bold text-gray-900">ANMI</span>
+              <img 
+                src={LogoHorizontal}
+                alt="ANMI"
+                className="h-14 w-auto"
+              />
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -391,10 +393,11 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
-              </div>
-              <span className="text-2xl font-bold">ANMI</span>
+              <img 
+                src={LogoHorizontal}
+                alt="ANMI"
+                className="h-14 w-auto"
+              />
             </div>
             <p className="text-gray-400">
               Tu asistente de salud inteligente desarrollado por estudiantes de la UNMSM
