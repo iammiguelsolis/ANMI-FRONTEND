@@ -61,9 +61,6 @@ export const HomePage: React.FC = () => {
     ? dietsData 
     : dietsData.filter(diet => diet.category === selectedCategory);
 
-  // Obtener categorías únicas
-  const categories = ['all', ...Array.from(new Set(dietsData.map(d => d.category)))];
-
   return (
     <div className="min-h-screen bg-gray-50">
       

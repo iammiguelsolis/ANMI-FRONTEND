@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowLeft, Clock, Users, AlertCircle, ChefHat, Apple, Droplet, ShieldCheck, BookOpen, CheckCircle } from 'lucide-react';
 import { dietsData, categoryConfig } from '../data/dietsData';
 
 // ============== COMPONENTE PRINCIPAL ==============
 export const DietDetailPage = () => {
-  const [selectedDietId, setSelectedDietId] = useState<string>('inicio-6-meses');
+  const [selectedDietId] = useState<string>('inicio-6-meses');
   const [activeTab, setActiveTab] = useState<'info' | 'meals' | 'variations'>('info');
   
   const diet = dietsData.find(d => d.id === selectedDietId);
