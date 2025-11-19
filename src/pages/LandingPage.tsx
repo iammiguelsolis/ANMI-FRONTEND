@@ -5,6 +5,17 @@ import LogoHorizontal from '../assets/logohorizontal.png';
 export const LandingPage: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setMobileMenuOpen(false); // Cerrar menú móvil después del click
+    }
+  };
+
   const videos = [
     {
       id: 1,
@@ -44,14 +55,34 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#inicio" className="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
-              <a href="#caracteristicas" className="text-gray-700 hover:text-red-600 transition-colors">Características</a>
-              <a href="#videos" className="text-gray-700 hover:text-red-600 transition-colors">Videos</a>
-              <a href="#proyecto" className="text-gray-700 hover:text-red-600 transition-colors">Proyecto</a>
-              <Link to="/login" className="px-4 py-2 text-gray-700 hover:text-red-600 transition-colors">
+              <button 
+                onClick={() => scrollToSection('inicio')} 
+                className="text-gray-700 hover:text-red-600 transition-colors cursor-pointer"
+              >
+                Inicio
+              </button>
+              <button 
+                onClick={() => scrollToSection('caracteristicas')} 
+                className="text-gray-700 hover:text-red-600 transition-colors cursor-pointer"
+              >
+                Características
+              </button>
+              <button 
+                onClick={() => scrollToSection('videos')} 
+                className="text-gray-700 hover:text-red-600 transition-colors cursor-pointer"
+              >
+                Videos
+              </button>
+              <button 
+                onClick={() => scrollToSection('proyecto')} 
+                className="text-gray-700 hover:text-red-600 transition-colors cursor-pointer"
+              >
+                Proyecto
+              </button>
+              <Link to="/login" className="px-6 py-2  bg-red-500 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all shadow-md">
                 Iniciar Sesión
               </Link>
-              <Link to="/register" className="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all shadow-md">
+              <Link to="/register" className="px-6 py-2  bg-red-500 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all shadow-md">
                 Registrarse
               </Link>
             </div>
@@ -74,12 +105,32 @@ export const LandingPage: React.FC = () => {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 bg-white">
             <div className="px-4 py-3 space-y-3">
-              <a href="#inicio" className="block text-gray-700 hover:text-red-600 py-2">Inicio</a>
-              <a href="#caracteristicas" className="block text-gray-700 hover:text-red-600 py-2">Características</a>
-              <a href="#videos" className="block text-gray-700 hover:text-red-600 py-2">Videos</a>
-              <a href="#proyecto" className="block text-gray-700 hover:text-red-600 py-2">Proyecto</a>
-              <Link to="/login" className="block text-gray-700 hover:text-red-600 py-2">Iniciar Sesión</Link>
-              <Link to="/register" className="block w-full text-center px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg mt-2">
+              <button 
+                onClick={() => scrollToSection('inicio')} 
+                className="block w-full text-left text-gray-700 hover:text-red-600 py-2"
+              >
+                Inicio
+              </button>
+              <button 
+                onClick={() => scrollToSection('caracteristicas')} 
+                className="block w-full text-left text-gray-700 hover:text-red-600 py-2"
+              >
+                Características
+              </button>
+              <button 
+                onClick={() => scrollToSection('videos')} 
+                className="block w-full text-left text-gray-700 hover:text-red-600 py-2"
+              >
+                Videos
+              </button>
+              <button 
+                onClick={() => scrollToSection('proyecto')} 
+                className="block w-full text-left text-gray-700 hover:text-red-600 py-2"
+              >
+                Proyecto
+              </button>
+              <Link to="/login" className="block w-full text-center px-6 py-2 bg-red-500 text-white rounded-lg mt-2">Iniciar Sesión</Link>
+              <Link to="/register" className="block w-full text-center px-6 py-2  bg-red-500 text-white rounded-lg mt-2">
                 Registrarse
               </Link>
             </div>
@@ -88,7 +139,7 @@ export const LandingPage: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="inicio" className="pt-24 pb-16 px-4 bg-gradient-to-br from-red-50 via-white to-red-50">
+      <section id="inicio" className="pt-24 pb-16 px-4 bg-gradient-to-br from-red-50 via-white to-red-50 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -111,9 +162,12 @@ export const LandingPage: React.FC = () => {
                 <Link to="/register" className="px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all shadow-lg text-center font-semibold">
                   Comenzar Ahora
                 </Link>
-                <a href="#videos" className="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-red-500 hover:text-red-600 transition-all text-center font-semibold">
+                <button 
+                  onClick={() => scrollToSection('videos')} 
+                  className="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-red-500 hover:text-red-600 transition-all text-center font-semibold"
+                >
                   Ver Videos Informativos
-                </a>
+                </button>
               </div>
               <div className="flex items-center gap-8 pt-4">
                 <div>
@@ -162,7 +216,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Características */}
-      <section id="caracteristicas" className="py-20 px-4 bg-white">
+      <section id="caracteristicas" className="py-20 px-4 bg-white scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -214,7 +268,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Videos Section */}
-      <section id="videos" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
+      <section id="videos" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -256,7 +310,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Proyecto UNMSM Section */}
-      <section id="proyecto" className="py-20 px-4 bg-white">
+      <section id="proyecto" className="py-20 px-4 bg-white scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -406,8 +460,22 @@ export const LandingPage: React.FC = () => {
           <div>
             <h4 className="font-bold mb-4">Plataforma</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#caracteristicas" className="hover:text-white">Características</a></li>
-              <li><a href="#videos" className="hover:text-white">Videos</a></li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('caracteristicas')} 
+                  className="hover:text-white transition-colors"
+                >
+                  Características
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('videos')} 
+                  className="hover:text-white transition-colors"
+                >
+                  Videos
+                </button>
+              </li>
               <li><Link to="/login" className="hover:text-white">Iniciar Sesión</Link></li>
               <li><Link to="/register" className="hover:text-white">Registrarse</Link></li>
             </ul>
@@ -424,7 +492,14 @@ export const LandingPage: React.FC = () => {
           <div>
             <h4 className="font-bold mb-4">Universidad</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#acerca" className="hover:text-white">Acerca del Proyecto</a></li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('proyecto')} 
+                  className="hover:text-white transition-colors"
+                >
+                  Acerca del Proyecto
+                </button>
+              </li>
               <li><a href="#" className="hover:text-white">Equipo</a></li>
               <li><a href="#" className="hover:text-white">UNMSM</a></li>
               <li><a href="#" className="hover:text-white">Contacto</a></li>
@@ -435,6 +510,12 @@ export const LandingPage: React.FC = () => {
           <p>&copy; 2024 ANMI - Iniciativa Estudiantil UNMSM. Todos los derechos reservados.</p>
         </div>
       </footer>
+
+      <style>{`
+        html {
+          scroll-behavior: smooth;
+        }
+      `}</style>
     </div>
   );
 };
