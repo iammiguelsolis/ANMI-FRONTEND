@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMessagesForChat, sendMessage, getUserChats } from '../api/apiService';
 import type { Message } from '../types';
+import Logo from '../assets/logo.jpeg';
 
 export const ChatWindowPage: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -167,9 +168,7 @@ export const ChatWindowPage: React.FC = () => {
                 <div className={`max-w-[75%] ${isUser ? 'order-2' : 'order-1'}`}>
                   {!isUser && (
                     <div className="flex items-center mb-1">
-                      <div className="w-6 h-6 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
-                        AI
-                      </div>
+                      <img src={Logo} alt="Asistente" className="h-8 w-auto rounded-full mr-2" />
                       <span className="text-xs text-gray-500 font-medium">Asistente</span>
                     </div>
                   )}

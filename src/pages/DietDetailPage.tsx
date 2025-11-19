@@ -1,29 +1,43 @@
 import { useState, useEffect } from 'react';
+// 1. IMPORTANTE: Importamos useParams y useNavigate
+import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Users, AlertCircle, ChefHat, Apple, Droplet, ShieldCheck, BookOpen, CheckCircle } from 'lucide-react';
 import { dietsData, categoryConfig } from '../data/dietsData';
 
 // ============== COMPONENTE PRINCIPAL ==============
 export const DietDetailPage = () => {
-  const [selectedDietId] = useState<string>('inicio-6-meses');
+  // 2. CORRECCIÓN: Leemos el ID de la URL en lugar de usar useState fijo
+  const { dietId } = useParams();
+  const navigate = useNavigate();
+  
   const [activeTab, setActiveTab] = useState<'info' | 'meals' | 'variations'>('info');
   
-  const diet = dietsData.find(d => d.id === selectedDietId);
+  // 3. CORRECCIÓN: Buscamos usando el dietId que viene de la URL
+  const diet = dietsData.find(d => d.id === dietId);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [selectedDietId]);
+  }, [dietId]); // Se ejecuta cuando cambia el ID
 
-  if (!diet) return null;
+  // Si no encuentra la dieta (usuario pone url inventada), mostramos error o volvemos
+  if (!diet) {
+    return (
+       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+         <h2 className="text-2xl font-bold text-gray-800 mb-4">Dieta no encontrada</h2>
+         <button onClick={() => navigate('/app')} className="text-red-600 font-bold">Volver al inicio</button>
+       </div>
+    );
+  }
 
   const categoryInfo = categoryConfig[diet.category];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-pink-50">
+    <div className="min-h-screen bg-red-50 via-white to-pink-50">
       {/* Header con navegación */}
       <div className="bg-white shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <button 
-            onClick={() => window.history.back()}
+            onClick={() => navigate('/app', { state: { initialTab: 'diets' } })}
             className="flex items-center text-red-600 font-medium hover:text-red-700 transition-colors"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
@@ -80,10 +94,10 @@ export const DietDetailPage = () => {
 
       {/* Tabs */}
       <div className="max-w-7xl mx-auto px-4 mb-6">
-        <div className="bg-white rounded-xl shadow-md p-2 inline-flex gap-2">
+        <div className="bg-white rounded-xl shadow-md p-2 inline-flex gap-2 flex-wrap md:flex-nowrap">
           <button
             onClick={() => setActiveTab('info')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+            className={`flex-1 md:flex-none px-6 py-3 rounded-lg font-semibold transition-all ${
               activeTab === 'info' 
                 ? 'bg-red-600 text-white shadow-lg' 
                 : 'text-gray-600 hover:bg-gray-100'
@@ -93,7 +107,7 @@ export const DietDetailPage = () => {
           </button>
           <button
             onClick={() => setActiveTab('meals')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+            className={`flex-1 md:flex-none px-6 py-3 rounded-lg font-semibold transition-all ${
               activeTab === 'meals' 
                 ? 'bg-red-600 text-white shadow-lg' 
                 : 'text-gray-600 hover:bg-gray-100'
@@ -103,13 +117,13 @@ export const DietDetailPage = () => {
           </button>
           <button
             onClick={() => setActiveTab('variations')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+            className={`flex-1 md:flex-none px-6 py-3 rounded-lg font-semibold transition-all ${
               activeTab === 'variations' 
                 ? 'bg-red-600 text-white shadow-lg' 
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
-            📅 Variaciones Semanales
+            📅 Variaciones
           </button>
         </div>
       </div>
@@ -125,7 +139,7 @@ export const DietDetailPage = () => {
             </div>
 
             {/* Objetivos */}
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-l-4 border-green-500">
+            <div className="bg-green-50 rounded-xl shadow-lg p-6 border-l-4 border-green-500">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
                 <CheckCircle className="w-7 h-7 text-green-600 mr-3" />
                 Objetivos de esta Etapa
@@ -141,7 +155,7 @@ export const DietDetailPage = () => {
             </div>
 
             {/* Advertencias */}
-            <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500">
+            <div className="bg-red-100 rounded-xl shadow-lg p-6 border-l-4 border-red-500">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
                 <AlertCircle className="w-7 h-7 text-red-600 mr-3" />
                 Advertencias Importantes
@@ -157,7 +171,7 @@ export const DietDetailPage = () => {
             </div>
 
             {/* Información Nutricional */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl shadow-lg p-6">
+            <div className="bg-pink-100 rounded-xl shadow-lg p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
                 <Apple className="w-7 h-7 text-purple-600 mr-3" />
                 Información Nutricional
@@ -193,7 +207,7 @@ export const DietDetailPage = () => {
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 {diet.foodCombinations.map((combo, i) => (
-                  <div key={i} className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-4 border-l-4 border-blue-500">
+                  <div key={i} className="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
                     <h3 className="font-bold text-gray-900 mb-2">{combo.combination}</h3>
                     <p className="text-gray-700 text-sm">{combo.benefit}</p>
                   </div>
@@ -202,7 +216,7 @@ export const DietDetailPage = () => {
             </div>
 
             {/* Tips de Preparación */}
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6">
+            <div className="bg-yellow-50 rounded-xl shadow-lg p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
                 <BookOpen className="w-7 h-7 text-orange-600 mr-3" />
                 Consejos de Preparación
@@ -218,7 +232,7 @@ export const DietDetailPage = () => {
             </div>
 
             {/* Disclaimer */}
-            <div className="bg-gradient-to-r from-red-100 to-pink-100 rounded-xl shadow-lg p-6 border-2 border-red-400">
+            <div className="bg-red-100 rounded-xl shadow-lg p-6 border-2 border-red-400">
               <div className="flex items-start">
                 <ShieldCheck className="w-8 h-8 text-red-600 mr-4 flex-shrink-0 mt-1" />
                 <p className="text-gray-800 text-base leading-relaxed font-medium">{diet.disclaimer}</p>
@@ -231,7 +245,7 @@ export const DietDetailPage = () => {
           <div className="space-y-6">
             {diet.dailyMeals.map((meal, i) => (
               <div key={i} className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white p-4">
+                <div className="bg-red-500 text-white p-4">
                   <h3 className="text-2xl font-bold">{meal.nombre}</h3>
                   <p className="text-white/90 flex items-center mt-1">
                     <Clock className="w-4 h-4 mr-2" />
@@ -307,9 +321,9 @@ export const DietDetailPage = () => {
               </p>
               
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="w-full min-w-[600px]">
                   <thead>
-                    <tr className="bg-gradient-to-r from-red-500 to-pink-500 text-white">
+                    <tr className="bg-red-500 text-white">
                       <th className="p-3 text-left rounded-tl-lg">Día</th>
                       <th className="p-3 text-left">Proteína (Hierro)</th>
                       <th className="p-3 text-left">Carbohidrato</th>
@@ -330,7 +344,7 @@ export const DietDetailPage = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6">
+            <div className="bg-green-50 rounded-xl shadow-lg p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-3">🔄 Beneficios de Variar:</h3>
               <ul className="space-y-2">
                 <li className="flex items-start">

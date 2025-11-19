@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Logo from '../assets/logo.jpeg';
 import { dietsData, categoryConfig } from '../data/dietsData';
 
@@ -48,7 +48,11 @@ const ChevronRightIcon = () => (
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'home' | 'diets'>('home');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState<'home' | 'diets'>(
+    location.state?.initialTab || 'home'
+  );
+
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const handleLogout = () => {
