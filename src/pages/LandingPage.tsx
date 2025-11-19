@@ -79,10 +79,10 @@ export const LandingPage: React.FC = () => {
               >
                 Proyecto
               </button>
-              <Link to="/login" className="px-6 py-2  bg-red-500 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all shadow-md">
+              <Link to="/login" className="px-6 py-2  bg-red-500 text-white rounded-lg hover:from-red-600 hover:to-red-900 transition-all shadow-md">
                 Iniciar Sesión
               </Link>
-              <Link to="/register" className="px-6 py-2  bg-red-500 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all shadow-md">
+              <Link to="/register" className="px-6 py-2  bg-red-500 text-white rounded-lg hover:from-red-600 hover:to-red-900 transition-all shadow-md">
                 Registrarse
               </Link>
             </div>
