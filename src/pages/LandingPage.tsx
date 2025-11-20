@@ -19,26 +19,39 @@ export const LandingPage: React.FC = () => {
   const videos = [
     {
       id: 1,
-      title: "¿Qué es la anemia infantil?",
-      description: "Conoce las causas y cómo prevenirla con una alimentación adecuada",
-      thumbnail: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80",
-      duration: "4:30"
+      title: "Por un Perú con niños sin anemia",
+      description: "Campaña del Gobierno del Perú: Cuida el desarrollo de tu hijo y llévalo al centro de salud para el descarte de anemia.",
+      thumbnail: "https://i.ytimg.com/vi/obsWwRZtC4I/maxresdefault.jpg",
+      duration: "0:41",
+      url: "https://www.youtube.com/watch?v=obsWwRZtC4I",
+
+      source: "Gobierno del Perú – Comunicaciones",
+      sourceUrl: "https://www.youtube.com/@gobiernoperucomunicaciones"
     },
     {
       id: 2,
-      title: "Alimentos ricos en hierro",
-      description: "Descubre qué alimentos locales pueden prevenir la anemia en bebés",
-      thumbnail: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&q=80",
-      duration: "5:45"
+      title: "¿Qué es la Anemia? El INS responde",
+      description: "El nutricionista Antonio Castillo del Instituto Nacional de Salud explica qué es la anemia y sus riesgos en niños y gestantes.",
+      thumbnail: "https://i.ytimg.com/vi/KbDMDgMRrKo/maxresdefault.jpg",
+      duration: "1:41",
+      url: "https://www.youtube.com/watch?v=KbDMDgMRrKo",
+      source: "INS Perú – Instituto Nacional de Salud",
+      sourceUrl: "https://www.youtube.com/c/INSPERÚOFICIAL"
     },
     {
-      id: 3,
-      title: "Cómo usar ANMI",
-      description: "Tutorial paso a paso para consultar información nutricional",
-      thumbnail: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
-      duration: "3:20"
-    }
+    id: 3,
+    title: "Conoce qué alimentos debes consumir para luchar contra la anemia",
+    description: "Recomendaciones del Minsa e INS sobre alimentos ricos en hierro y suplementación para prevenir la anemia infantil.",
+    thumbnail: "https://i.ytimg.com/vi/dPGBg64X6rE/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDeuH9RV04E-kvbuRjPlQNvNQDB6A",
+    duration: "1:51",
+    url: "https://www.youtube.com/watch?v=dPGBg64X6rE",
+    source: "INS Perú – Instituto Nacional de Salud",
+    sourceUrl: "https://www.youtube.com/c/INSPERÚOFICIAL"
+  }
   ];
+
+
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -66,6 +79,12 @@ export const LandingPage: React.FC = () => {
                 className="text-gray-700 hover:text-red-600 transition-colors cursor-pointer"
               >
                 Características
+              </button>
+              <button 
+                onClick={() => scrollToSection('como-usar')} 
+                className="text-gray-700 hover:text-red-600 transition-colors cursor-pointer"
+              >
+                Cómo usar ANMI
               </button>
               <button 
                 onClick={() => scrollToSection('videos')} 
@@ -118,6 +137,12 @@ export const LandingPage: React.FC = () => {
                 Características
               </button>
               <button 
+                onClick={() => scrollToSection('como-usar')} 
+                className="block w-full text-left text-gray-700 hover:text-red-600 py-2"
+              >
+                Cómo usar ANMI
+              </button>
+              <button 
                 onClick={() => scrollToSection('videos')} 
                 className="block w-full text-left text-gray-700 hover:text-red-600 py-2"
               >
@@ -139,7 +164,7 @@ export const LandingPage: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="inicio" className="pt-24 pb-16 px-4 bg-gradient-to-br from-red-50 via-white to-red-50 scroll-mt-16">
+      <section id="inicio" className="pt-24 pb-16 px-4 bg-red-50 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -148,7 +173,7 @@ export const LandingPage: React.FC = () => {
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
                 Combatiendo la anemia infantil con
-                <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent"> información</span>
+                <span className="text-red-500"> información</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600">
                 ANMI es un Asistente Nutricional Materno Infantil desarrollado por estudiantes de la UNMSM. Brindamos información verificada sobre nutrición y prevención de anemia en bebés de 6 a 12 meses.
@@ -159,7 +184,7 @@ export const LandingPage: React.FC = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/register" className="px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all shadow-lg text-center font-semibold">
+                <Link to="/register" className="px-8 py-4 bg-red-500 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all shadow-lg text-center font-semibold">
                   Comenzar Ahora
                 </Link>
                 <button 
@@ -183,7 +208,7 @@ export const LandingPage: React.FC = () => {
             <div className="relative">
               <div className="relative z-10 bg-white rounded-2xl shadow-2xl p-6">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
@@ -200,7 +225,7 @@ export const LandingPage: React.FC = () => {
                   <div className="bg-gray-100 rounded-lg p-3 text-sm">
                     ¡Hola! Soy ANMI. ¿Quieres saber qué alimentos previenen la anemia en bebés?
                   </div>
-                  <div className="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg p-3 text-sm ml-12">
+                  <div className="bg-red-500 text-white rounded-lg p-3 text-sm ml-12">
                     ¿Qué alimentos ricos en hierro puedo darle a mi bebé de 8 meses?
                   </div>
                   <div className="bg-gray-100 rounded-lg p-3 text-sm">
@@ -216,32 +241,32 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Características */}
-      <section id="caracteristicas" className="py-20 px-4 bg-white scroll-mt-16">
+      <section id="caracteristicas" className="py-20 px-4 bg-gray-100 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
               ¿Por qué confiar en ANMI?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Información verificada basada en fuentes oficiales del MINSA, OMS y OPS
+              Información verificada basada en fuentes oficiales
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-8 bg-gradient-to-br from-red-50 to-white rounded-2xl border border-red-100 hover:shadow-xl transition-all">
-              <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6">
+            <div className="p-8 bg-red-50 rounded-2xl border border-red-100 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-red-500 rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Información Verificada</h3>
               <p className="text-gray-600">
-                Contenido curado por estudiantes y basado en guías oficiales de salud del MINSA, OMS y OPS.
+                Contenido curado por estudiantes y basado en guías oficiales de salud.
               </p>
             </div>
 
-            <div className="p-8 bg-gradient-to-br from-red-50 to-white rounded-2xl border border-red-100 hover:shadow-xl transition-all">
-              <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6">
+            <div className="p-8 bg-red-50 rounded-2xl border border-red-100 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-red-500 rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
@@ -252,8 +277,8 @@ export const LandingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-8 bg-gradient-to-br from-red-50 to-white rounded-2xl border border-red-100 hover:shadow-xl transition-all">
-              <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6">
+            <div className="p-8 bg-red-50 rounded-2xl border border-red-100 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-red-500 rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
@@ -267,8 +292,108 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
+
+      {/* Cómo usar ANMI Section */}
+      <section id="como-usar" className="py-20 px-4 bg-white scroll-mt-16">
+        <div className="max-w-7xl mx-auto">
+
+          {/* Título */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+              ¿Cómo usar ANMI?
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Aprende rápidamente cómo funciona el asistente y cómo aprovecharlo al máximo
+              para cuidar la nutrición de tu bebé.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+
+            {/* Video estilo tarjeta */}
+            <a
+              href="https://www.youtube.com/watch?v=S5dyibga5Ps"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group cursor-pointer block"
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+                <img 
+                  src="https://i.ytimg.com/vi/S5dyibga5Ps/maxresdefault.jpg"
+                  alt="Cómo usar ANMI"
+                  className="w-full h-72 md:h-96 object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+
+                {/* Capa + botón play */}
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg className="w-10 h-10 text-red-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Duración opcional */}
+                <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  2:30
+                </div>
+              </div>
+
+              {/* Título + descripción */}
+              <div className="mt-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Cómo usar ANMI</h3>
+                <p className="text-gray-600">Aprende cómo funciona ANMI y cómo aprovechar sus herramientas.</p>
+              </div>
+
+              {/* Fuente */}
+              <p className="text-sm text-gray-500 mt-1">
+                Fuente:{" "}
+                <a 
+                  href="https://www.youtube.com/@ANMIPerú" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  ANMI Oficial
+                </a>
+              </p>
+            </a>
+
+            {/* Texto explicativo */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-gray-900">
+                Guía rápida de uso
+              </h3>
+
+              <ul className="space-y-4 text-gray-700 leading-relaxed">
+                <li className="flex items-start">
+                  <span className="text-red-600 mr-3 text-xl">•</span>
+                  Ingresa a ANMI y selecciona la edad de tu bebé para obtener recomendaciones personalizadas.
+                </li>
+
+                <li className="flex items-start">
+                  <span className="text-red-600 mr-3 text-xl">•</span>
+                  Pregunta lo que desees: alimentación, anemia, suplementos de hierro, recetas, etc.
+                </li>
+
+                <li className="flex items-start">
+                  <span className="text-red-600 mr-3 text-xl">•</span>
+                  Guarda tus consultas favoritas para revisarlas cuando quieras.
+                </li>
+              </ul>
+
+              <div className="p-4 bg-red-50 border-l-4 border-red-400 rounded">
+                <p className="text-sm text-red-700">
+                  <strong>Nota:</strong> ANMI brinda información educativa y no reemplaza la consulta con un profesional de salud.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Videos Section */}
-      <section id="videos" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white scroll-mt-16">
+      <section id="videos" className="py-20 px-4 bg-gray-100 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -278,10 +403,15 @@ export const LandingPage: React.FC = () => {
               Aprende más sobre la prevención de anemia infantil con nuestros videos informativos
             </p>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8">
             {videos.map((video) => (
-              <div key={video.id} className="group cursor-pointer">
+              <a
+                key={video.id}
+                href={video.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group cursor-pointer block"
+              >
                 <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all">
                   <img 
                     src={video.thumbnail} 
@@ -303,7 +433,18 @@ export const LandingPage: React.FC = () => {
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{video.title}</h3>
                   <p className="text-gray-600">{video.description}</p>
                 </div>
-              </div>
+                <p className="text-sm text-gray-500 mt-1">
+                Fuente:{" "}
+                <a 
+                  href={video.sourceUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  {video.source}
+                </a>
+              </p>
+              </a>
             ))}
           </div>
         </div>
@@ -327,7 +468,7 @@ export const LandingPage: React.FC = () => {
                 Nuestro objetivo es utilizar la tecnología de manera responsable para combatir la anemia infantil en el Perú, aplicando principios de ética en IA, protección de datos y desarrollo responsable de software.
               </p>
               
-              <div className="bg-gradient-to-r from-red-50 to-white p-6 rounded-xl border border-red-100">
+              <div className="bg-red-50 p-6 rounded-xl border border-red-100">
                 <h4 className="font-bold text-gray-900 mb-3 flex items-center">
                   <svg className="w-5 h-5 text-red-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
@@ -343,10 +484,6 @@ export const LandingPage: React.FC = () => {
                   <li className="flex items-start">
                     <span className="text-red-600 mr-2">•</span>
                     <span>Minimización y anonimización de datos personales</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-600 mr-2">•</span>
-                    <span>Información basada en fuentes oficiales (MINSA, OMS, OPS)</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-600 mr-2">•</span>
@@ -377,7 +514,7 @@ export const LandingPage: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-red-100 to-red-200 rounded-2xl p-8">
+              <div className="bg-red-100 rounded-2xl p-8">
                 <img 
                   src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80"
                   alt="Estudiantes UNMSM"
@@ -423,7 +560,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-red-500 to-red-600">
+      <section className="py-20 px-4 bg-red-500">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             ¿Listo para prevenir la anemia infantil?
